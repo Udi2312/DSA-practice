@@ -3,7 +3,8 @@ class abc{
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Enter no. of rows: ");
-        // int r = s.nextInt();
+        int r = s.nextInt();
+        // System.out.println("Enter no. of cols: ");
         // int c = s.nextInt();
 
         // Question 1
@@ -78,6 +79,41 @@ class abc{
 
 
         // Question 7
+        // for(int i = 1; i<=r ; i++){
+        //     for(int j = 1; j<=c ; j++){
+        //         if( (i+j) % 2 ==0){
+        //             System.out.print(1);
+        //         }
+        //         else{
+        //             System.out.print(2);
+        //         }
+        //     }
+        //     System.out.println();
+        // }
+
         
+        // Question 8
+        // for(int i = 1; i<=r; i++){
+        //     for(int j = 1; j<=i; j++){
+        //         System.out.print(j);
+        //     }
+        //     System.out.println();
+        // }
+
+
+        // Question 9
+        for(int i =1; i<=r; i++){
+            for(int j =1; j<= r -i; j++){
+                System.out.print(" ");
+            }
+                for(int l = 1; l<=i; l++){
+                    System.out.print(l);
+                }
+                for(int m = i-1; m>=1; m--){
+                    System.out.print(m);
+                }
+            
+            System.out.println();
+        }
 }
 }
