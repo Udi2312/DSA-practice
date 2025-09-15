@@ -1,6 +1,22 @@
 import java.util.Scanner;
 public class Arrays {
 
+    // static int tripleSum(int arr[], int x){
+
+    // }
+
+    static int pairSum(int arr[], int x){
+        int ans = 0;
+        for(int i = 0; i<arr.length; i++){
+            for(int j = i+1; j<arr.length; j++){
+                if(arr[j] == x-arr[i]){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+
     static boolean checkSortedArray(int arr[]){
         boolean flag = true;
         for(int i =0; i<arr.length-1; i++){
@@ -67,6 +83,23 @@ public class Arrays {
     // Check if the given array is sorted or not
     // int arr[] = takeArrayInput();
     // System.out.println(checkSortedArray(arr));
+
+
+    // Find the total number of pairs in array whose total sum is equal to the given value x
+//     int arr[] = takeArrayInput();
+//     System.out.println("Enter the value of x:");
+//     int x = s.nextInt();
+//   int ans =  targetSum(arr, x);
+//   System.out.println(ans);
+
+
+
+    // Find the total number of triplets in array whose total sum is equal to the given value x
+//     int arr[] = takeArrayInput();
+//     System.out.println("Enter the value of x:");
+//     int x = s.nextInt();
+//   int ans =  tripleSum(arr, x);
+//   System.out.println(ans);
 
     }
 }
