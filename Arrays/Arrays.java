@@ -1,9 +1,42 @@
 import java.util.Scanner;
 public class Arrays {
+    static void swapTwoNumbers(int a , int b){
+        int c = 0;
+         System.out.println("Before swapping: a= " + a + " b= "+ b);
+         c=a;
+         a=b;
+         b=c;
+         System.out.println("After swapping: a= " + a + " b= "+ b);
+    }
+    static int findUniqueElement(int arr[]){
+        int ans = -1;
+        for(int i = 0; i<arr.length; i++){
+            for(int j = i+1; j<arr.length; j++){
+                if(arr[i] == arr[j]){
+                    arr[i]= -1;
+                    arr[j] = -1;
+                }
+                else{
+                    ans = arr[i];
+                }
+            }
+        }
+        return ans;
+    }
 
-    // static int tripleSum(int arr[], int x){
-
-    // }
+    static int tripleSum(int arr[], int x){
+        int ans = 0;
+        for(int i = 0; i<arr.length; i++){
+            for(int j = i+1; j<arr.length; j++){
+                for(int k = j+1; k<arr.length; k++){
+                    if(arr[i] + arr[j] + arr[k] == x){
+                        ans++;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
 
     static int pairSum(int arr[], int x){
         int ans = 0;
@@ -101,5 +134,15 @@ public class Arrays {
 //   int ans =  tripleSum(arr, x);
 //   System.out.println(ans);
 
+    // Find the unique number in an array where all numbers are repeated twice expect for the unique number
+    //   int arr[] = takeArrayInput();
+    //   int ans = findUniqueElement(arr);
+    //   System.out.println("unique element is: " + ans);
+
+    
+    // Swap two numbers using temperory variable
+    // int a = 7;
+    // int b = 17;
+    // swapTwoNumbers(a, b);
     }
 }
