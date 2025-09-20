@@ -1,13 +1,51 @@
 import java.util.Scanner;
 public class Arrays {
+    
+    static void rotateAnArrayInPlace(int arr[] , int k){
+        
+    }
+
+    static int[] rotateAnArray(int arr[], int k){
+        k = k % arr.length;
+        int ans[] = new int[arr.length];
+        int x = 0;
+
+        for(int i = arr.length-k; i<arr.length; i++){
+            ans[x] = arr[i];
+            x++;
+        }
+        for(int i = 0; i<arr.length-k; i++){
+            ans[x] = arr[i];
+            x++;
+        }
+
+        return ans;
+    }
+
+    static void reverseAnArray(int arr[]){
+        int x = arr.length/2;
+        for(int i = 0; i<x; i++){
+          swap(arr, i, arr.length-i-1);
+        }
+      
+        
+    }
+
+    static void swap(int arr[] , int i ,int j){
+         int c = 0;
+         c = arr[i];
+         arr[i] = arr[j];
+         arr[j] = c;
+    }
     static void swapTwoNumbers(int a , int b){
         int c = 0;
-         System.out.println("Before swapping: a= " + a + " b= "+ b);
+        //  System.out.println("Before swapping: a= " + a + " b= "+ b);
          c=a;
          a=b;
          b=c;
-         System.out.println("After swapping: a= " + a + " b= "+ b);
+        //  System.out.println("After swapping: a= " + a + " b= "+ b);
     }
+
     static int findUniqueElement(int arr[]){
         int ans = -1;
         for(int i = 0; i<arr.length; i++){
@@ -144,5 +182,21 @@ public class Arrays {
     // int a = 7;
     // int b = 17;
     // swapTwoNumbers(a, b);
+
+
+    // Reverse an array
+    // int arr[] = {1,2,3,4,5,6,7};
+    // reverseAnArray(arr);
+    //   printArray(arr);
+
+
+    // Rotate an array by k steps, k might be greater than n
+//     int arr[] = {1,2,3,4,5};
+//   int ans[] =rotateAnArray(arr, 102);
+//         printArray(ans);
+
+
+    // Rotate an array by k steps in place
+
     }
 }
