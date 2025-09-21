@@ -1,8 +1,25 @@
 import java.util.Scanner;
 public class Arrays {
+    static int [] returnFrequencyArray(int arr[]){
+        int ans [] = new int[100000];
+        for(int i = 0; i<arr.length; i++){
+            ans[arr[i]]++;
+        }
+        return ans;
+    }
+    static void reverseAnArrayWithIndices(int arr[] , int i, int j){
+      while(i<j){
+        swap(arr, i, j);
+        i++;
+        j--;
+      }
+    }
     
     static void rotateAnArrayInPlace(int arr[] , int k){
-        
+        k = k % arr.length;
+        reverseAnArrayWithIndices(arr, 0, arr.length-k-1);
+        reverseAnArrayWithIndices(arr, arr.length-k, arr.length-1);
+        reverseAnArrayWithIndices(arr, 0, arr.length-1);
     }
 
     static int[] rotateAnArray(int arr[], int k){
@@ -197,6 +214,25 @@ public class Arrays {
 
 
     // Rotate an array by k steps in place
+    //  int arr[] = {1,2,3,4,5};
+    //  rotateAnArrayInPlace(arr, 3);
+    //  printArray(arr);
 
+
+    // given Q queries, check if the given numbers are persent in array or not. Max element is 10^5
+    int arr[] = {1,12,4,5,67,88,44,3,50,5};
+     int frearr[] = returnFrequencyArray(arr);
+     System.out.println("Enter number of queries: ");
+     int q = s.nextInt();
+     System.out.println("Enter the numbers to be checked: ");
+     for(int i = 0; i<q; i++){
+        int x = s.nextInt();
+        if(frearr[x] != 0){
+            System.out.println("yes");
+        }
+        else{
+            System.out.println("No");
+        }
+     }
     }
 }
