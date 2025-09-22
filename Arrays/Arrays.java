@@ -1,5 +1,28 @@
 import java.util.Scanner;
 public class Arrays {
+    static int[] makePrefixSumArray(int arr[]){
+        
+        return arr;
+    }
+    static int [] returnSquaresOfElements(int arr[]){
+        int ans[] = new int[arr.length];
+        int i = 0 , j = arr.length - 1 , k= 0;
+
+        while(i<=j){
+            if(arr[i]*arr[i] >= arr[j]*arr[j]){
+                ans[k] = arr[i]*arr[i];
+                i++;
+                k++;
+            }
+            else{
+                ans[k] = arr[j]*arr[j];
+                j--;
+                k++;
+            }
+        }
+        reverseAnArray(ans);
+        return ans;
+    }
     static int [] returnFrequencyArray(int arr[]){
         int ans [] = new int[100000];
         for(int i = 0; i<arr.length; i++){
@@ -220,19 +243,50 @@ public class Arrays {
 
 
     // given Q queries, check if the given numbers are persent in array or not. Max element is 10^5
-    int arr[] = {1,12,4,5,67,88,44,3,50,5};
-     int frearr[] = returnFrequencyArray(arr);
-     System.out.println("Enter number of queries: ");
-     int q = s.nextInt();
-     System.out.println("Enter the numbers to be checked: ");
-     for(int i = 0; i<q; i++){
-        int x = s.nextInt();
-        if(frearr[x] != 0){
-            System.out.println("yes");
-        }
-        else{
-            System.out.println("No");
-        }
-     }
+    // int arr[] = {1,12,4,5,67,88,44,3,50,5};
+    //  int frearr[] = returnFrequencyArray(arr);
+    //  System.out.println("Enter number of queries: ");
+    //  int q = s.nextInt();
+    //  System.out.println("Enter the numbers to be checked: ");
+    //  for(int i = 0; i<q; i++){
+    //     int x = s.nextInt();
+    //     if(frearr[x] != 0){
+    //         System.out.println("yes");
+    //     }
+    //     else{
+    //         System.out.println("No");
+    //     }
+    //  }
+
+
+    // Sort an array consisting of only 0s and 1s
+    // int arr[] = {1,0,0,1,1,0,1,0,1,1,0};
+    // int i = 0 , j= arr.length-1;
+    // while(i<j){
+    //    if(arr[i] == 1 && arr[j] == 0){
+    //     swap(arr, i, j);
+    //     i++;
+    //     j--;
+    //    }
+    //    if(arr[i] == 0){
+    //     i++;
+    //    }
+    //    if(arr[j] == 1){
+    //     j--;
+    //    }
+    // }
+
+    // printArray(arr);
+
+
+    // Given an array in increasing order return an array with squares of each number in increasing order
+    // int arr[] = {-10,-6,-5,-3,-2,-1};
+    // int ans [] = returnSquaresOfElements(arr);
+    // printArray(ans);
+
+
+    // Return the prefix sum array of a given array in place
+    int arr[] = {1,4,2,5,7,66,3};
+    printArray(makePrefixSumArray(arr));
     }
 }
