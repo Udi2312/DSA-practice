@@ -1,7 +1,26 @@
 import java.util.Scanner;
 public class Arrays {
+
+    static int calculatePrefixSum(int arr[],  int i){
+     int pref []=  makePrefixSumArray(arr);
+      return pref[i];
+    }
+
+    static int calculateSuffixSum(int arr[],  int i){
+     int suff []=  makeSuffixSumArray(arr);
+      return suff[i];
+    }
+
     static int[] makePrefixSumArray(int arr[]){
-        
+        for(int i = 1; i<arr.length; i++){
+            arr[i] = arr[i-1] + arr[i];
+        }
+        return arr;
+    }
+    static int[] makeSuffixSumArray(int arr[]){
+        for(int i = arr.length-2; i>=0; i--){
+            arr[i] = arr[i+1] + arr[i];
+        }
         return arr;
     }
     static int [] returnSquaresOfElements(int arr[]){
@@ -30,6 +49,7 @@ public class Arrays {
         }
         return ans;
     }
+
     static void reverseAnArrayWithIndices(int arr[] , int i, int j){
       while(i<j){
         swap(arr, i, j);
@@ -286,7 +306,28 @@ public class Arrays {
 
 
     // Return the prefix sum array of a given array in place
-    int arr[] = {1,4,2,5,7,66,3};
-    printArray(makePrefixSumArray(arr));
+    // int arr[] = {1,2,3,4,5};
+    // printArray(makePrefixSumArray(arr));
+
+
+    // Check if the array can be partitioned int 2 parts with equal sum
+    // int arr[] = {5,3,2,6,3,1};
+    // boolean flag = false;
+    // int sum = 0;
+    // for(int i = 0; i<arr.length; i++){
+    //     sum = sum + arr[i];
+    // }
+    // int presum = arr[0];
+    // int suffsum = sum;
+
+    // for(int i = 1; i<arr.length; i++){
+    //     presum = presum + arr[i];
+    //     suffsum = sum - presum;
+    //     if(presum == suffsum){
+    //         flag = true;
+    //         break;
+    //     }
+    // }
+    // System.out.println(flag);
     }
 }
