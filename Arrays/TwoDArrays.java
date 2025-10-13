@@ -1,5 +1,22 @@
 import java.util.Scanner;
 public class TwoDArrays {
+    static void multiply2matrices(int[][] a, int[][] b){
+        if(a[0].length != b.length){
+            System.out.println("Wrong input: ");
+            return;
+        }
+        int[][] mul = new int[a.length][b[0].length];
+
+        for(int i = 0; i<a.length; i++){
+            for(int j = 0; j<b[0].length; j++){
+                for(int k = 0; k<b.length; k++){
+                    mul[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        print2DArray(mul);
+
+    }
     static void add2matrices(int a[][] , int b[][]){
         if(a.length != b.length || a[0].length != b[0].length){
             System.out.println("Wrong Input");
@@ -42,9 +59,10 @@ public class TwoDArrays {
         // print2DArray(arr2);
         
         // Multiply 2 matrices
-        int arr[][] = {{1,1,1} , {2,2,2} , {3,3,3}};
-        int arr2[][] ={{4,4,4} , {5,5,5} , {6,6,6}};
-        
+        // int arr[][] = {{1,1,1} , {2,2,2} , {3,3,3}};
+        // int arr2[][] ={{4,4,4} , {5,5,5} , {6,6,6}};
+        // multiply2matrices(arr, arr2);
 
+        
     }
 }
