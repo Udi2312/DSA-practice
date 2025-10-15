@@ -1,5 +1,101 @@
 import java.util.Scanner;
 public class TwoDArrays {
+    static void fillmatrix(int n){
+        int a[][] = new int[n][n];
+        int curr = 1;
+         int toprow= 0, bottomrow = n-1, rightcol=n-1, leftcol = 0;
+        int totalelements = 0;
+        while (totalelements < n*n) { 
+            for(int j = leftcol; j<=rightcol && totalelements < n*n; j++){
+                a[toprow][j] = curr++;
+                totalelements++;
+            }
+            toprow++;
+            for(int i = toprow; i<=bottomrow && totalelements < n*n; i++){
+                a[i][rightcol] = curr++;
+                totalelements++;
+            }
+            rightcol--;
+            for(int j = rightcol; j>=leftcol && totalelements < n*n; j--){
+                a[bottomrow][j] = curr++;
+                totalelements++;
+            }
+            bottomrow--;
+            for(int i = bottomrow; i>=toprow && totalelements < n*n; i--){
+                a[i][leftcol] = curr++;
+                totalelements++;
+            }
+            leftcol++;
+        }
+        printMatrix(a);
+    }
+    static void printspiralorder(int[][] a, int r, int c){
+        int toprow= 0, bottomrow = r-1, rightcol=c-1, leftcol = 0;
+        int totalelements = 0;
+        while (totalelements < r*c) { 
+            for(int j = leftcol; j<=rightcol && totalelements < r*c; j++){
+                System.out.print(a[toprow][j] + " ");
+                totalelements++;
+            }
+            toprow++;
+            for(int i = toprow; i<=bottomrow && totalelements < r*c; i++){
+                System.out.print(a[i][rightcol] + " ");
+                totalelements++;
+            }
+            rightcol--;
+            for(int j = rightcol; j>=leftcol && totalelements < r*c; j--){
+                System.out.print(a[bottomrow][j] + " ");
+                totalelements++;
+            }
+            bottomrow--;
+            for(int i = bottomrow; i>=toprow && totalelements < r*c; i--){
+                System.out.print(a[i][leftcol] + " ");
+                totalelements++;
+            }
+            leftcol++;
+        }
+    }
+    static void printMatrix(int[][] a){
+        for(int i = 0; i<a.length; i++){
+            for(int j = 0; j<a[i].length; j++){
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    static int[][] pascaltriangle(int n){
+        int ans[][] = new int[n][];
+        for(int i =0; i<ans.length; i++){
+            ans[i] = new int[i+1];
+            ans[i][0] = ans[i][i] = 1;
+            for(int j = 1; j<i; j++){
+                ans[i][j] = ans[i-1][j] + ans[i-1][j-1];
+            }
+        }
+        return ans;
+    }
+    static void reverse(int[] a){
+        int i = 0;
+        int j = a.length-1;
+        while(i<j){
+            int c = 0;
+            c = a[i];
+            a[i] = a[j];
+            a[j] = c;
+            i++;
+            j--;
+        }
+    }
+    static void rotate2Darrray(int[][] a, int n){
+        System.out.println("Initial Array: ");
+        print2DArray(a, n, n);
+        transposeInPlace(a, n, n);
+        for(int i = 0; i<a.length; i++){
+            reverse(a[i]);
+            }
+            System.out.println("Rotated Array: ");
+            print2DArray(a, n, n);
+        }
     static void transposeInPlace(int a[][] , int r, int c){
         if(r!=c){
             System.out.println("Wrong Input");
@@ -15,6 +111,7 @@ public class TwoDArrays {
                 }
             }
         }
+        System.out.println("Transposed Array: ");
         print2DArray(a, r, c);
     }
     static void swapin2Darray(int a[][] , int i1, int j1, int i2, int j2){
@@ -101,8 +198,29 @@ public class TwoDArrays {
         
         
         // Transpose of a matrix
-        int arr[][] = {{1,1,1} , {2,2,2} , {3,3,3}};
         // transposeofmatrix(arr,2,3);
-        transposeInPlace(arr, 3,3);
+        // transposeInPlace(arr, 3,3);
+        
+        
+        // Rotate a square matrix 90 degrees in place
+        // rotate2Darrray(arr, arr.length);
+        
+        
+        // Print the nth row of pascal's triangle
+        // int ans[][] =  pascaltriangle(7);
+        // printMatrix(ans);
+        
+        
+        // Print numbers of matrix in spiral order
+        int arr[][] = {{1,1,1} , {2,2,2} , {3,3,3} , {4,4,4}};
+        System.out.println("Initial matrix");
+        // print2DArray(arr, 4,4);
+        printMatrix(arr);
+        System.out.println();
+        printspiralorder(arr,4,3);
+
+
+        // Generate a n*n matrix and fill it from 1 to n^2
+        // fillmatrix(3);
     }
 }
