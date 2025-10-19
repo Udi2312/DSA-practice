@@ -1,5 +1,34 @@
 import java.util.Scanner;
 public class TwoDArrays {
+    static void makePrefixSumArray(int arr[]){
+        for(int i = 1; i<arr.length; i++){
+            arr[i] = arr[i] + arr[i-1];
+        }
+    }
+    static int findsumprefixsummethod(int [][] a, int l1, int r1, int l2, int r2){
+        for(int i = 0; i<a.length; i++){
+            makePrefixSumArray(a[i]);
+        }
+        int ans = 0;
+        for(int i = l1; i<=l2; i++){
+            ans += a[i][r2];
+        }
+        for(int i = l1; i<=l2; i++){
+            if(r1 > 0){
+                ans -= a[i][r1-1];
+            }
+        }
+        return ans;
+    }
+    static int findsum(int [][] a, int l1, int r1, int l2, int r2){
+        int sum = 0;
+        for(int i = l1; i<=l2; i++){
+            for(int j = r1; j<=r2; j++){
+                sum = sum + a[i][j];
+            }
+        }
+        return sum;
+    }
     static void fillmatrix(int n){
         int a[][] = new int[n][n];
         int curr = 1;
@@ -170,6 +199,7 @@ public class TwoDArrays {
         int r = s.nextInt();
         System.out.println("How many columns: ");
         int c = s.nextInt();
+        System.out.println("Enter Numbers: ");
         int arr[][] = new int[r][c];
         for(int i = 0; i<r; i++){
             for(int j = 0; j<c; j++){
@@ -212,15 +242,30 @@ public class TwoDArrays {
         
         
         // Print numbers of matrix in spiral order
-        int arr[][] = {{1,1,1} , {2,2,2} , {3,3,3} , {4,4,4}};
-        System.out.println("Initial matrix");
-        // print2DArray(arr, 4,4);
-        printMatrix(arr);
-        System.out.println();
-        printspiralorder(arr,4,3);
+        // int arr[][] = {{1,1,1} , {2,2,2} , {3,3,3} , {4,4,4}};
+        // System.out.println("Initial matrix");
+        // // print2DArray(arr, 4,4);
+        // printMatrix(arr);
+        // System.out.println();
+        // printspiralorder(arr,4,3);
 
 
         // Generate a n*n matrix and fill it from 1 to n^2
         // fillmatrix(3);
-    }
+
+
+        // Find sum of submatrix within a matrix with given coordinates
+        //     int arr[][] = take2DArrayInput();
+        //    int ans =  findsum(arr, 0,0,2,2);
+        //    System.out.println("The sum of submatrix is: " + ans);
+        
+        
+        
+        // Find sum of submatrix within a matrix with given coordinates( Method - 2)
+           int arr[][] = take2DArrayInput();
+           int ans =  findsumprefixsummethod(arr, 3,1,5,4);
+           System.out.println("The sum of submatrix is: " + ans);
+    
+
+}
 }
