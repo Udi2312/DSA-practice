@@ -1,5 +1,19 @@
 import java.util.Scanner;
 public class Recursion {
+    static int euclidalgo(int x , int y){
+        if(y == 0){
+            return x;
+        }
+        return euclidalgo(y , x%y);
+    }
+    static int FindGCD(int x , int y){
+        while(x%y != 0){
+            int rem = x%y;
+            x = y;
+            y = rem;
+        }
+        return y;
+    }
     static int alternativesum(int n){
         if(n==1){
             return 1;
@@ -143,8 +157,24 @@ public class Recursion {
 
 
     // Given a number n, find the sum of natural numbers till n but with alternative signs
-    System.out.println("Enter n: ");
-    int n = s.nextInt();
-    System.out.println(alternativesum(n));
+    // System.out.println("Enter n: ");
+    // int n = s.nextInt();
+    // System.out.println(alternativesum(n));
+
+
+    // Find GCD of x and y using long division
+    // System.out.println("Enter x: ");
+    // int x = s.nextInt();
+    // System.out.println("Enter y: ");
+    // int y = s.nextInt();
+    // System.out.println(FindGCD(x,y));
+
+
+    // Find GCD using euclid's algorithm
+    System.out.println("Enter x: ");
+    int x = s.nextInt();
+    System.out.println("Enter y: ");
+    int y = s.nextInt();
+    System.out.println(euclidalgo(x,y));
     }
 }
