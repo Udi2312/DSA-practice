@@ -1,5 +1,35 @@
 import java.util.Scanner;
 public class Recursion {
+    static boolean checkpallendrome(String s , int i, int j){
+        
+        if(i>=j){
+            return true;
+        }
+        if(s.charAt(i) == s.charAt(j) && checkpallendrome(s, i+1, j-1)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    static String reverse(String s, int i){
+         if(i==s.length()){
+            return "";
+        }
+        String subans = reverse(s,i+1);
+        return subans + s.charAt(i);
+    }
+    static String removeoccurances(String s, int i){
+        String ans = "";
+        if(i==s.length()){
+            return ans;
+        }
+        if(s.charAt(i) != 'a'){
+            ans += s.charAt(i);
+        }
+       String sans =  removeoccurances(s, i+1);
+        return ans + sans;
+    }
     static void returnallindices(int arr[] , int x, int i){
         if(i == arr.length){
             return;
@@ -251,8 +281,29 @@ public class Recursion {
 
 
     // If an element is present in an array, return the first index it occurs, else return -1
-    int arr[] = {2,10,20,2,6,2,9};
-    // System.out.println(returnindexofelement(arr,2,0));
-    returnallindices(arr,2,0);
+    // int arr[] = {2,10,20,2,6,2,9};
+    // // System.out.println(returnindexofelement(arr,2,0));
+    // returnallindices(arr,2,0);
+
+
+    // Remove occurances of 'a' from the given string
+//     System.out.println("Enter the string:");
+//     String str = s.nextLine();
+//    String ans =  removeoccurances(str,0);
+//    System.out.println(ans);
+
+
+    // Reverse a string
+//     System.out.println("Enter the string:");
+//     String str = s.nextLine();
+//    String ans =  reverse(str,0);
+//    System.out.println(ans);
+
+
+    // Check pallendrome without reversing
+    System.out.println("Enter the string:");
+    String str = s.nextLine();
+   boolean ans =  checkpallendrome(str,0,str.length()-1);
+   System.out.println(ans);
     }
 }
