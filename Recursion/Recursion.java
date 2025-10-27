@@ -1,7 +1,44 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Recursion {
+    static void sumofsubsets(int arr[] , int currsum , int i){
+        if(i>=arr.length){
+            System.out.println(currsum);
+            return;
+        }
+        int curr = arr[i];
+        sumofsubsets(arr, currsum + curr , i+1);
+        sumofsubsets(arr, currsum, i+1);
+    }
+    static void printssq(String s, String currans){
+        if(s.length() == 0){
+            System.out.print(currans + " ");
+            return;
+        }
+        char curr = s.charAt(0);
+        String remString = s.substring(1);
+
+        printssq(remString, currans + curr);
+        printssq(remString, currans);
+
+    } 
+    static ArrayList<String> getssq(String s){
+        ArrayList<String> ans = new ArrayList<>();
+        if(s.length() == 0){
+            ans.add(" ");
+            return ans;
+        }
+
+        char curr = s.charAt(0);
+        ArrayList<String> smallans = getssq(s.substring(1));
+        for(String ss : smallans){
+            ans.add(ss);
+            ans.add(curr + ss);
+        }
+        return ans;
+    }
     static boolean checkpallendrome(String s , int i, int j){
-        
+
         if(i>=j){
             return true;
         }
@@ -301,9 +338,30 @@ public class Recursion {
 
 
     // Check pallendrome without reversing
-    System.out.println("Enter the string:");
-    String str = s.nextLine();
-   boolean ans =  checkpallendrome(str,0,str.length()-1);
-   System.out.println(ans);
+//     System.out.println("Enter the string:");
+//     String str = s.nextLine();
+//    boolean ans =  checkpallendrome(str,0,str.length()-1);
+//    System.out.println(ans);
+
+
+    // // WAP to return all subsequences of a givenn string
+    // System.out.println("Enter the string:");
+    // String str = s.nextLine();
+    // ArrayList<String> ans = getssq(str);
+    // System.out.println("All subsequences of the given string are: ");
+    // System.out.print(ans);
+
+
+
+    // WAP to print all subsequences of a given string
+    // System.out.println("Enter the string:");
+    // String str = s.nextLine();
+    // System.out.println("All subsequences of the given string are: ");
+    // printssq(str , "");
+
+
+    // WAP to print the sum of all subsets of a given array
+    int arr[] = {2,4,5};
+    sumofsubsets(arr, 0,0);
     }
 }
