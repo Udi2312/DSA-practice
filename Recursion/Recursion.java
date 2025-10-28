@@ -1,8 +1,16 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Recursion {
-    static void keypadcombination(String s){
-
+    static void keypadcombination(String digits, String keypad[], String res){
+        if(digits.length() == 0){
+            System.out.print(res + " ");
+            return;
+        }
+        int currnum = digits.charAt(0) - '0';
+        String currchoices = keypad[currnum];
+         for(int i = 0; i<currchoices.length(); i++){
+            keypadcombination(digits.substring(1), keypad, res + currchoices.charAt(i));
+         }
     }
     static int frogjump(int height[], int curridx){
         if(curridx == height.length-1){
@@ -390,8 +398,8 @@ public class Recursion {
 
 
     // Keypad combination question
-    String digits = "23";
-    String[] keypad = {"","", "abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-
+    // String digits = "253";
+    // String[] keypad = {"","", "abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    // keypadcombination(digits, keypad, "");
     }
 }
