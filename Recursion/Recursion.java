@@ -1,6 +1,25 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Recursion {
+    static void keypadcombination(String s){
+
+    }
+    static int frogjump(int height[], int curridx){
+        if(curridx == height.length-1){
+            return 0;
+        }
+        int firstans = Math.abs(height[curridx] - height[curridx+1]) + frogjump(height, curridx + 1) ;
+        if(curridx == height.length-2){
+            return firstans;
+        }
+        int secondans = Math.abs(height[curridx] - height[curridx+2]) + frogjump(height, curridx + 2);
+        if(firstans > secondans){
+            return secondans;       
+         }
+         else{
+            return firstans;
+         }
+    }
     static void sumofsubsets(int arr[] , int currsum , int i){
         if(i>=arr.length){
             System.out.println(currsum);
@@ -361,7 +380,18 @@ public class Recursion {
 
 
     // WAP to print the sum of all subsets of a given array
-    int arr[] = {2,4,5};
-    sumofsubsets(arr, 0,0);
+    // int arr[] = {2,4,5};
+    // sumofsubsets(arr, 0,0);
+
+
+    // Frog jump question
+    // int height [] = {10,30,40,20};
+    // System.out.println(frogjump(height,0));
+
+
+    // Keypad combination question
+    String digits = "23";
+    String[] keypad = {"","", "abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
     }
 }
