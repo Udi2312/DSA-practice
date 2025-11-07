@@ -1,4 +1,35 @@
 public class Binary_Search {
+    static int peakelement(int arr[]){
+        int st = 0, end = arr.length-1;
+        while(st<=end){
+            int mid = st + (end-st)/2;
+            if((mid == 0 || arr[mid-1] < arr[mid]) && (mid == arr.length-1 || arr[mid] > arr[mid+1])){
+                return mid;
+            }
+            if(arr[mid] < arr[mid+1]){
+                st = mid +1;
+            }
+            else{
+                end = mid-1;
+            }
+        }
+        return -1;
+    }
+    static int mountainarraypeak(int arr[]){
+        int st = 0, end = arr.length-1;
+        int ans = 0;
+        while(st<=end){
+            int mid = st + (end-st)/2;
+            if(arr[mid] < arr[mid+1]){
+                st = mid+1;
+                ans = mid+1;
+            }
+            else{
+                end = mid-1;
+            }
+        }
+        return ans;
+    }
     static boolean search2Dmatrix2(int arr[][] , int target){
         int r = arr.length;
         int c = arr[1].length;
@@ -226,5 +257,21 @@ public class Binary_Search {
 
         // int arr[][] = {{1,4,7,11,15} , {2,5,8,12,20} , {3,6,9,16,22}};
         // System.out.println(search2Dmatrix2(arr,19));
+
+
+        // Given a mountain array, find it's peak
+        // int arr[] = {2,4,6,8,7,5,3,1};
+        // System.out.println(mountainarraypeak(arr));
+
+
+//         A peak element is an element that is strictly greater than its neighbors.
+// Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+// You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array
+
+        // int arr[] = {1,2,3,1};
+        // System.out.println(peakelement(arr));
+
+
+        //
     }
 }
