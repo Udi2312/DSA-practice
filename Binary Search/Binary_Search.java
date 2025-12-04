@@ -1,4 +1,75 @@
 public class Binary_Search {
+    static boolean isplacementpossible(int arr[], int m , int minDistance){
+        int kidsplaced= 1, lastkid = arr[0];
+        for(int i = 1; i<arr.length; i++){
+            if(arr[i] - lastkid >= minDistance){
+                    kidsplaced++;
+                    lastkid = arr[i];
+            }
+        }
+        if(kidsplaced >= m){
+            return true;
+        }
+        else{
+            return false;
+        } 
+    }
+    static int racetrack(int arr[], int m){
+        if(m > arr.length){
+            return -1;
+        }
+        int ans = 0, st = 1, end = (int)1e9;
+        while(st <= end){
+            int mid = st + (end-st)/2;
+            if(isplacementpossible(arr,m,mid)){
+                ans = mid;
+                st = mid+1;
+            }
+            else{
+                end = mid-1;
+            }
+        }
+        return ans;
+    }
+    static boolean isDivisionPossible(int arr[] , int m , int maxchocoAllowed){
+        int numofstudents = 1, choco = 0;
+        for(int i = 0; i<arr.length; i++){
+            if(maxchocoAllowed < arr[i]){
+                return false;
+            }
+            if(choco + arr[i] <= maxchocoAllowed){
+                choco += arr[i];
+            }
+            else{
+                numofstudents++;
+                choco = arr[i];
+            }
+        }
+        if(numofstudents > m){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    static int distributeChocolates(int arr[] , int m){
+        if(arr.length < m){
+            return -1;
+        }
+        int ans = 0, st = 1, end = (int)1e9;
+
+        while(st <= end){
+            int mid = st + (end-st)/2;
+            if(isDivisionPossible(arr,m,mid)){
+                ans = mid;
+                end = mid-1;
+            }
+            else{
+                st = mid +1;
+            }
+        }
+        return ans;
+    }
     static int peakelement(int arr[]){
         int st = 0, end = arr.length-1;
         while(st<=end){
@@ -272,6 +343,17 @@ public class Binary_Search {
         // System.out.println(peakelement(arr));
 
 
-        //
+        //  Chocolate Distribution problem
+        // int arr[] = {5,3,1,4,2};
+        // int m = 3;
+        // int ans = distributeChocolates(arr,m);
+        // System.out.println(ans);
+
+
+        // Race Track problem
+        int arr[] = {1,2,4,8,9};
+        int m = 3;
+        int ans = racetrack(arr,m);
+        System.out.println(ans);
     }
 }
