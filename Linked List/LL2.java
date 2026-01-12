@@ -13,6 +13,7 @@ public class LL2 {
              System.out.print(temp.data + " ");
             temp = temp.next;
         }
+        System.out.println();
     }
     public static void deleteNode(Node x){
         x.data = x.next.data;
@@ -33,6 +34,35 @@ public class LL2 {
         }
         return temp2;
     }
+    public static Node nthNodesingleiteration(Node head, int idx){
+        Node slow = head;
+        Node fast = head;
+        for(int i = 0; i<idx; i++){
+            fast = fast.next;
+        }
+        while(fast != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+    public static Node deletenthnodefromlast(Node head, int idx){
+        Node slow = head;
+        Node fast = head;
+        for(int i = 0; i<idx; i++){
+            fast = fast.next;
+        }
+        if(fast == null){
+            head = head.next;
+            return head;
+        }
+        while(fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
     public static void main(String[] args) {
         Node a = new Node(5);
         Node b = new Node(3);
@@ -50,6 +80,18 @@ public class LL2 {
 
 
         // return the node nth position from the last
-        System.out.println(returnnodefromend(a,1).data);
+        // System.out.println(returnnodefromend(a,1).data);
+
+
+
+        // Return the node nth position from the last in one iteration
+        // System.out.println(nthNodesingleiteration(a, 3).data);
+
+
+
+        // Delete the node nth position from last in one iteration
+        printLL(a);
+        a = deletenthnodefromlast(a, 3);
+        printLL(a);
     }
 }
