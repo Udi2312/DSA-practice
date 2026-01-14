@@ -112,18 +112,74 @@ public class LL2 {
         }
         slow.next = slow.next.next;
     }
+    public static boolean checkcycle(Node head){
+        if(head == null || head.next == null) return false;
+         Node slow = head;
+        Node fast = head;
+        while(fast != null){
+            if(slow == null) return false;
+            slow = slow.next;
+            if(fast.next == null) return false;
+            fast = fast.next.next;
+            if(fast == slow) return true;
+        }
+        return false;
+    }
+    public static Node returncyclenode(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) break;
+        }
+        Node temp = head;
+        while(temp != slow){
+            slow = slow.next;
+            temp = temp.next;
+        }
+        return temp;
+    }
+    public static Node mergesortedLL(Node head1, Node head2){
+        Node temp1 = head1; 
+        Node temp2 = head2;
+        Node head = new Node(100);
+        Node temp = head;
+        while(temp1 != null && temp2 != null){
+            if(temp1.data < temp2.data){
+                Node a = new Node(temp1.data);
+                temp.next = a;
+                temp = a;
+                temp1 = temp1.next;
+            }
+            else{
+                Node a = new Node(temp2.data);
+                temp.next = a;
+                temp = a;
+                temp2 = temp2.next;
+            }
+        }
+        if(temp1 == null){
+            temp.next = temp2;
+        }
+        else{
+            temp.next = temp1;
+        }
+        return head.next; 
+    }
     public static void main(String[] args) {
         Node a = new Node(5);
-        Node b = new Node(3);
-        Node c = new Node(9);
-        Node d = new Node(8);
-        Node e = new Node(16); 
-        // Node f = new Node(19); 
+        Node b = new Node(31);
+        Node c = new Node(33);
+        Node d = new Node(80);
+        Node e = new Node(164); 
+        Node f = new Node(196); 
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
-        // e.next = f;
+        e.next = f;
+        // f.next = c;
         // delete a node that is given as a parameter and is not the last node (Leetcode 237)
         // deleteNode(b);
         // printLL(a);
@@ -148,13 +204,13 @@ public class LL2 {
 
 
         // Finding the intersection of 2 linked lists
-        // Node a1 = new Node(1);
-        // Node b1 = new Node(2);
-        // Node c1 = new Node(92);
-        // Node d1 = new Node(81);
-        // a1.next = b1;
-        // b1.next = c1;
-        // c1.next = d1;
+        Node a1 = new Node(1);
+        Node b1 = new Node(2);
+        Node c1 = new Node(3);
+        Node d1 = new Node(400);
+        a1.next = b1;
+        b1.next = c1;
+        c1.next = d1;
         // d1.next = c;
         // System.out.println(intersectionof2LL(a, a1).data);
 
@@ -166,8 +222,24 @@ public class LL2 {
 
 
         // Delete the middle element of a LL in one traversal
-        printLL(a);
-        deletemiddlenode(a);
-        printLL(a);
+        // printLL(a);
+        // deletemiddlenode(a);
+        // printLL(a);
+
+
+
+        // Check whether the given LL has cycle or not
+        // System.out.println(checkcycle(a));
+
+
+
+        // given a LL with cycle, return the node where the cycle begins
+        // System.out.println(returncyclenode(a).data);
+
+
+
+        // Given 2 sorted LL, merge them into a sorted LL
+        Node head = mergesortedLL(a,a1);
+        printLL(head);
     }
 }
