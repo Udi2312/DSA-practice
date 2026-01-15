@@ -167,6 +167,31 @@ public class LL2 {
         }
         return head.next; 
     }
+    public static Node mergesortedLLwithoutextraspace(Node head1, Node head2){
+        Node h = new Node(100);
+        Node t = h;
+        Node t1 = head1;
+        Node t2 = head2;
+        while(t1 != null && t2 != null){
+            if(t1.data < t2.data){
+                t.next = t1;
+                t = t1;
+                t1 = t1.next;
+            }
+            else{
+                 t.next = t2;
+                t = t2;
+                t2 = t2.next;
+            }
+        }
+        if(t1 == null){
+            t.next = t2;
+        }
+        else{
+            t.next = t1;
+        }
+        return h.next;
+    }
     public static void main(String[] args) {
         Node a = new Node(5);
         Node b = new Node(31);
@@ -180,6 +205,7 @@ public class LL2 {
         d.next = e;
         e.next = f;
         // f.next = c;
+
         // delete a node that is given as a parameter and is not the last node (Leetcode 237)
         // deleteNode(b);
         // printLL(a);
@@ -239,7 +265,13 @@ public class LL2 {
 
 
         // Given 2 sorted LL, merge them into a sorted LL
-        Node head = mergesortedLL(a,a1);
-        printLL(head);
+        // Node head = mergesortedLL(a,a1);
+        // printLL(head);
+
+
+
+        // Given 2 sorted LL, merge them into a sorted LL without using extra space
+        Node head1 = mergesortedLLwithoutextraspace(a,a1);
+        printLL(head1);
     }
 }
