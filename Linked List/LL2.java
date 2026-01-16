@@ -1,3 +1,5 @@
+
+
 public class LL2 {
      public static class Node{
         int data;
@@ -192,13 +194,69 @@ public class LL2 {
         }
         return h.next;
     }
+    public static Node reverseLLusingrecursion(Node head){
+        if(head.next == null) return head;
+        Node newhead = reverseLLusingrecursion(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newhead;
+    }
+    public static Node reverseLL(Node head){
+        Node prev = null;
+        Node agla = null;
+        Node curr = head;
+        while(curr != null){
+            agla = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = agla;
+        }
+        return prev;
+    }
+    public static boolean isPalendrome(Node head){
+        Node middle = findmiddleelement(head);
+        Node rev = reverseLL(middle.next);
+        Node p1 = head;
+        Node p2 = rev;
+        while(p2 != null){
+            if(p1.data == p2.data){
+                p1 = p1.next;
+                p2 = p2.next;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+    public static Node oddevenLL(Node head){
+        Node even = new Node(0);
+        Node odd = new Node(0);
+        Node tempo = odd;
+        Node tempe = even;
+        Node temp = head;
+        while(temp != null){
+            tempo.next = temp;
+            temp = temp.next;
+            tempo = tempo.next;
+
+            tempe.next = temp;
+            if(temp == null) break;
+            temp = temp.next;
+            tempe = tempe.next;
+        }
+        odd = odd.next;
+        even = even.next;
+        tempo.next = even;
+        return odd;
+    }
     public static void main(String[] args) {
-        Node a = new Node(5);
-        Node b = new Node(31);
-        Node c = new Node(33);
-        Node d = new Node(80);
-        Node e = new Node(164); 
-        Node f = new Node(196); 
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+        Node d = new Node(4);
+        Node e = new Node(5); 
+        Node f = new Node(6); 
         a.next = b;
         b.next = c;
         c.next = d;
@@ -271,7 +329,35 @@ public class LL2 {
 
 
         // Given 2 sorted LL, merge them into a sorted LL without using extra space
-        Node head1 = mergesortedLLwithoutextraspace(a,a1);
-        printLL(head1);
+        // Node head1 = mergesortedLLwithoutextraspace(a,a1);
+        // printLL(head1);
+
+
+
+        // reverse a LL using recursion
+        // Node head =  reverseLLusingrecursion(a);
+        // printLL(head);
+
+
+
+        // reverse a LL using iteration
+        // Node head = reverseLL(a);
+        // printLL(head);
+
+
+
+        // Check if the given LL is palendrome or not (Leetcode 234)
+        // System.out.println(isPalendrome(a));
+
+
+
+        // Do Leetcode 2130
+
+
+
+        // Leetcode 328
+        Node head = oddevenLL(a);
+        printLL(head);
+
     }
 }
