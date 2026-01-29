@@ -55,17 +55,31 @@ public class stacks1{
 
 
         // Insert element at any index
-        int element = 67;
-        int idx = 0;
-           Stack<Integer> st2 = new Stack<>();
-           int n = st.size() - idx;
-           for(int i = 0; i<n; i++){
-            st2.push(st.pop());
-           }
-           st.push(element);
-           while(st2.size() > 0){
-            st.push(st2.pop());
-           }
-           System.out.println(st);
+        // int element = 67;
+        // int idx = 0;
+        //    Stack<Integer> st2 = new Stack<>();
+        //    int n = st.size() - idx;
+        //    for(int i = 0; i<n; i++){
+        //     st2.push(st.pop());
+        //    }
+        //    st.push(element);
+        //    while(st2.size() > 0){
+        //     st.push(st2.pop());
+        //    }
+        //    System.out.println(st);
+
+
+        // Display stack
+        // Stack<Integer> st2 = new Stack<>();
+        // while(st.size() > 0){
+        //     st2.push(st.pop());
+        // }
+        // while(st2.size() > 0){
+        //     System.out.println(st2.peek());
+        //     st.push(st2.pop());
+        // }
+
+
+        // 
     }
 }
