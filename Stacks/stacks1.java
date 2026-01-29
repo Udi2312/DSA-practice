@@ -1,5 +1,23 @@
 import java.util.Stack;
 public class stacks1{
+    public static void displaystackrev(Stack<Integer> st){
+        if(st.size() == 0){
+            return;
+        }
+        int top = st.pop();
+        System.out.println(top);
+        displaystackrev(st);
+        st.push(top);
+    }
+    public static void displaystack(Stack<Integer> st){
+        if(st.size() == 0){
+            return;
+        }
+        int top = st.pop();
+        displaystack(st);
+        System.out.println(top);
+        st.push(top);
+    }
     public static void main(String[] args) {
         Stack<Integer> st = new Stack<>();
         st.push(21);
@@ -80,6 +98,11 @@ public class stacks1{
         // }
 
 
-        // 
+        // Display reverse stack using recursion
+        // displaystackrev(st);
+
+
+        // Display stack using recursion
+        displaystack(st);
     }
 }
