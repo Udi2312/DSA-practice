@@ -18,6 +18,94 @@ public class stacks1{
         System.out.println(top);
         st.push(top);
     }
+    public static Stack reverseStack(Stack<Integer> st){
+        Stack<Integer> rt = new Stack<>();
+        while(st.size() > 0){
+            rt.push(st.pop());
+        }
+        Stack<Integer> qt = new Stack<>();
+        while(rt.size() > 0){
+            qt.push(rt.pop());
+        }
+        while(qt.size() > 0){
+            st.push(qt.pop());
+        }
+        return st;
+    }
+    public static void pushAtBottom(Stack<Integer> st , int a){
+        if(st.size() == 0){
+            st.push(a);
+            return;
+        }
+        int top = st.pop();
+        pushAtBottom(st, a);
+        st.push(top);
+    }
+    public static void revStackusingRecursion(Stack<Integer> st){
+        if(st.size() == 0){
+            return;
+        }
+        int top = st.pop();
+        revStackusingRecursion(st);
+        pushAtBottom(st, top);
+    }
+    public static class Stack2{
+        private int arr[] = new int[5];
+        private int idx = 0;
+
+        void push(int i){
+            if(isFull()){
+                System.out.println("Stack is full");
+                return;
+            }
+            arr[idx] = i;
+            idx++;
+        }
+
+        int peek(){
+            if(idx==0){
+                System.out.println("Stack is empty");
+                return -1;
+            }
+            return arr[idx-1];
+        }
+
+        int pop(){
+            if(idx==0){
+                System.out.println("Stack is empty");
+                return -1;
+            }
+            int top = arr[idx-1];
+            arr[idx-1] = 0;
+            idx--;
+            return top;
+        }
+
+        void display(){
+            for(int i = 0; i<idx; i++){
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+
+        int size(){
+            return idx;
+        }
+
+        boolean isEmpty(){
+            if(idx == 0) return true;
+            else return false;
+        }
+
+        boolean isFull(){
+            if(idx==arr.length) return true;
+            else return false;
+        }
+
+        int capacity(){
+            return arr.length;
+        }
+    }
     public static void main(String[] args) {
         Stack<Integer> st = new Stack<>();
         st.push(21);
@@ -103,6 +191,34 @@ public class stacks1{
 
 
         // Display stack using recursion
-        displaystack(st);
+        // displaystack(st);
+
+
+        // Reverse stack 
+        // reverseStack(st);
+        // System.out.println(st);
+
+
+        // Push at bottom
+        // pushAtBottom(st,25);
+        // System.out.println(st);
+
+
+        // Reverse a stack using recursion
+        // revStackusingRecursion(st);
+        // System.out.println(st);
+
+
+        // Array implementation of Stack
+        Stack2 st2 = new Stack2();
+        st2.push(1);
+        st2.display();
+        st2.push(2);
+        st2.display();
+        st2.push(3);
+        st2.display();
+        st2.pop();
+        st2.display();
+        System.out.println(st2.size());
     }
 }
