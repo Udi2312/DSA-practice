@@ -106,6 +106,72 @@ public class stacks1{
             return arr.length;
         }
     }
+
+    public static class Node{
+        int val;
+        Node next;
+        Node(int x){
+            val = x;
+        }
+    }
+    public static class Stack3{
+      private Node head = null;
+      private int size = 0;
+
+        void push(int x){
+            Node temp = new Node(x);
+            temp.next = head;
+            head = temp;
+            size++;
+        }
+
+        void displayrec(Node head){
+            if(head == null) return;
+            displayrec(head.next);
+            System.out.print(head.val + " ");
+        }
+        
+        void display(){
+            displayrec(head);
+            System.out.println();
+        }
+        void displayrev(){
+            Node temp = head;
+            while(temp != null){
+                System.out.print(temp.val + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+
+        int size(){
+            return size;
+        }
+
+        int pop(){
+            if(head == null){
+                System.out.println("Stack is empty");
+                return -1;
+            }
+            int ans = head.val;
+            head = head.next;
+            size--;
+            return ans;
+        }
+
+        int peek(){
+            if(head == null){
+                System.out.println("Stack is empty");
+                return -1;
+            }
+            return head.val;
+        }
+
+        boolean isEmpty(){
+            if(size == 0) return true;
+            return false;
+        }
+    }
     public static void main(String[] args) {
         Stack<Integer> st = new Stack<>();
         st.push(21);
@@ -210,7 +276,20 @@ public class stacks1{
 
 
         // Array implementation of Stack
-        Stack2 st2 = new Stack2();
+        // Stack2 st2 = new Stack2();
+        // st2.push(1);
+        // st2.display();
+        // st2.push(2);
+        // st2.display();
+        // st2.push(3);
+        // st2.display();
+        // st2.pop();
+        // st2.display();
+        // System.out.println(st2.size());
+
+
+        // LL implementation of stack
+         Stack3 st2 = new Stack3();
         st2.push(1);
         st2.display();
         st2.push(2);
