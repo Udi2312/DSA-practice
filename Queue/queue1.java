@@ -1,5 +1,23 @@
 
 public class queue1{
+    public static class CircularQueue{
+        int size = 0;
+        int f = r = -1;
+        int arr[] = new int[8];
+        public void add(int x) throws Exception{
+            if(size==0){
+                f = r = 0;
+                arr[0] = x;
+            }
+            else if(size == arr.length){
+                throw new Exception("Queue is full!");
+            }
+            else if(r < arr.length-1){
+                arr[++r] = x;
+            }
+
+        }
+    }
     public static class Node{
         int val;
         Node next;
@@ -170,17 +188,22 @@ public class queue1{
 
         // Linked List implementation
 
-        LLimplementation q = new LLimplementation();
-        q.display();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.display();
-        q.remove();
-        q.display();
-        System.out.println(q.peek());
-        System.out.println(q.size);
+        // LLimplementation q = new LLimplementation();
+        // q.display();
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
+        // q.add(4);
+        // q.display();
+        // q.remove();
+        // q.display();
+        // System.out.println(q.peek());
+        // System.out.println(q.size);
+
+
+        // Circular queue implementation
+
+
         
     }
 }
