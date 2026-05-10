@@ -1,7 +1,23 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class hashmap1 {
+    public class MyHashMap<K,V>{
+        public static final int DEFAULT_CAPACITY = 4;
+        public static final float DEFAULT_LOAD_FACTOR = 0.75f;
+        private class Node{
+            K key;
+            V value;
+            Node(K key, V value){
+                this.key = key;
+                this.value = value;
+            }
+        }
+        private int n;
+        private LinkedList<Node>[] buckets;
+        
+    }
     public static void HashmapMethods(){
         Map<String , Integer> mp = new HashMap<>();
         mp.put("a" , 21);
@@ -76,6 +92,7 @@ public class hashmap1 {
         // System.out.println(maxele);
 
 
-        
+        // Implement custom hashmap function
+
     }
 }
