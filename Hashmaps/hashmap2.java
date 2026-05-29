@@ -17,6 +17,40 @@ public class hashmap2 {
         }
         return mp;
     }
+
+    public static int ZeroSum(int arr[]){
+        HashMap<Integer , Integer> mp = new HashMap<>();
+        int presum = 0;
+        int maxlen = 0;
+        mp.put(0,-1);
+        for(int i = 0; i<arr.length; i++){
+            presum += arr[i];
+            if(mp.containsKey(presum)){
+                int a = i - mp.get(presum);
+                if(a > maxlen) maxlen = a;
+            }
+            else{
+                mp.put(presum , i);
+            }
+        }
+        return maxlen;
+    }
+
+    public static int[] TwoSum(int[] nums ,  int target){
+        int[] ans = {-1};
+        HashMap<Integer , Integer> mp = new HashMap<>();
+        for(int i = 0; i<nums.length; i++){
+            int partner = target - nums[i];
+            if(mp.containsKey(partner)){
+                ans = new int[]{i , mp.get(partner)};
+                return ans;
+            }
+            else{
+                mp.put(nums[i] , i);
+            }
+        }
+        return ans;
+    }
     public static boolean isIsomorphic(String s , String t){
         HashMap<Character , Character> mp = new HashMap<>();
         for(int i = 0; i<s.length(); i++){
@@ -48,6 +82,14 @@ public class hashmap2 {
 
 
         // TwoSum
-        
+        // int arr[] = {2,7,11,15};
+        // int target = 9;
+        // int ans[] = TwoSum(arr, target);
+        // System.out.println(ans[0] +" "+ans[1]);
+
+
+        // Largest zero sum subarray
+        int arr[] = {15,-2,2,-8,1,7,10};
+        System.out.println(ZeroSum(arr));
     }
 }
